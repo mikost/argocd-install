@@ -3,4 +3,12 @@ kind: Kustomization
 
 namespace: argocd
 resources:
+- namespace.yaml
+- cert-manager-ss-issuer.yaml
+- cert-manager-ca-cert.yaml
+- cert-manager-ca-issuer.yaml
+- argocd-server-cert.yaml
+- ingress.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.7.2/manifests/install.yaml
+patchesStrategicMerge:
+- argocd-server-insecure.yaml

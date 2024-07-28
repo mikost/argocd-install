@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-ca-certificate
+  namespace: argocd
+spec:
+  isCA: true
+  commonName: argocd-ca
+  subject:
+    organizations:
+      - Minikube ArgoCD CA
+    organizationalUnits:
+      - TheOneAndOnly
+  secretName: argocd-ca-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned-issuer
+    kind: Issuer
+    group: cert-manager.io
